@@ -128,7 +128,7 @@ export default function CreateProfile ({profile,setProfile})
             {
                 nextErrors[`project =${project.id}`] ="Enter project title"
             }
-        })
+        });
 
         setErrors(nextErrors);
         return Object.keys(nextErrors).length ===0;
@@ -138,6 +138,40 @@ export default function CreateProfile ({profile,setProfile})
 
 
     }
+
+    function handleSubmit(event){
+        event.preventDefault();
+
+        if (!validate()){
+            return;
+        }
+
+        const careerGoal = careerGoalRef.current.value.trim();
+
+        const savedProfile = {
+            id:"SF-001",
+            name:form.name.trim(),
+            email:form.email.trim(),
+            phone:form.phone.trim(),
+            education:form.education.trim(),
+            course:form.course,
+            careerGoal,
+            skills: form.skills.map((skill) => ({
+                ...skill,
+                name:skill.name.trim(),
+                
+            })),
+            projects: form.projects.filter((project) => project.title.trim()).map((project)=>({
+                description:project.description.trim(),
+                tech: project.tech.trim()
+            }))
+
+        };
+
+        setProfile(savedProfile);
+        navigate("/preview");
+    }
+
 
     return (
         <section className="form-page">
