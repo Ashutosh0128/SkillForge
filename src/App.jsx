@@ -40,15 +40,7 @@ export default function App() {
           />
         } />
 
-        <Route
-        path="/preview"
-        element={
-          <ProfilePreview
-          profile={profile}
-          
-          />
-        } />
-
+        
         <Route
         path="/profile/:id"
         element={
