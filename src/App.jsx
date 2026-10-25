@@ -2,7 +2,7 @@ import {Routes, Route} from "react-router-dom";
 import useLocalStorage from "./hooks/useLocalStorage";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-//import ProfilePreview from "./pages/ProfilePreview";
+import ProfilePreview from "./pages/ProfilePreview";
 import CreateProfile from "./pages/CreateProfile";
 import ProfileDetails from "./pages/ProfileDetails";
 import LearningGuide from "./pages/LearningGuide";
@@ -41,6 +41,14 @@ export default function App() {
         } />
 
         
+        <Route
+        path="/preview"
+        element={
+          <ProfilePreview
+          profile={profile}/>
+        } />
+
+
         <Route
         path="/profile/:id"
         element={
